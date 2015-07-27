@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ remove = "$1" -o abort-install = "$1" -o disappear = "$1" ]; then
+    rm -f /etc/init.d/ondemand
+    dpkg-divert --package ioi-environment --remove --rename \
+        --divert /etc/init.d/ondemand.diverted /etc/init.d/ondemand
+fi
+

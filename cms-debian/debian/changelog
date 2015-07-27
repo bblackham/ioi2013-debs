@@ -1,0 +1,247 @@
+cms (1.1.0~pre~git20130709~002105+fd15877-1) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @417ac13753d92a3298f2ca74ec54f08cc72f03ee **
+
+  [ Giovanni Mascellani ]
+  * Cosmetics and little fixes in debian/control.
+
+  [ Luca Wehrstedt ]
+  * Make non-ASCII compile messages visible
+
+  [ William Pettersson ]
+  * Add new task tests to setup.py
+
+  [ Bernard Blackham ]
+  * Fix typo in a comment
+  * Small fix to cms/grading/ParameterTypes.py
+
+  [ Luca Wehrstedt ]
+  * Many small fixes to the DB classes
+  * Small fixes to CWS
+  * Remove cms/grading/AbstractionLayer.py
+  * Some changes to ScoringService
+  * Improve the 'invalidate_submission' methods of ES and SS
+  * Reduce the use of export_to_dict and import_from_dict
+  * grading: some fixes to Job
+  * grading: fix a nasty subtle bug in the evaluation process
+  * CWS: small fix
+  * AWS: small fixes, whitespace and pseudo-PEP8
+  * RWS: small fix on the client-side interface
+
+  [ Bernard Blackham ]
+  * sandbox: add 1 to box ID to avoid collisions with console users of sandbox.
+
+  [ Luca Wehrstedt ]
+  * RWS: small fix on the client-side interface
+  * SS: small fix
+  * docs: fix typo
+
+  [ Stefano Maggiolo ]
+  * Added testimonials from Croatia and Japan.
+
+  [ Luca Wehrstedt ]
+  * Remove UpdateDB
+  * Use a different format for ContestExporter/Importer
+  * Rewrite YamlImporter and YamlReimporter
+  * Remove all specialized export_to_dict and import_from_dict methods
+  * ContestExporter: fix bug preventing export to archive
+  * CWS: fix bug in task description page
+  * YamlImporter: fix bug preventing script from doing anything
+  * Fix unsetting user IPs through AWS
+  * Fix psutil exception name on RS
+  * Small cosmetic fixes to get_submissions
+
+  [ Bernard Blackham ]
+  * TV: add Dataset to cms.db
+  * TV: add SubmissionResult to cms.db
+
+  [ Luca Wehrstedt ]
+  * TV: add UserTestResult to cms.db
+
+  [ Bernard Blackham ]
+  * TV: make Job versioning-aware
+  * TV: make get_task_type versioning-aware
+  * TV: make get_score_type versioning-aware
+  * TV: make task_score versioning-aware
+
+  [ Luca Wehrstedt ]
+  * TV: add get_submission_results to cms.service
+
+  [ Bernard Blackham ]
+  * TV: add function to get the datasets ES and SS have to judge for a task
+  * TV: make EvaluationService versioning-aware
+  * TV: make ScoringService versioning-aware
+  * TV: make ContestWebServer versioning-aware
+  * TV: add Dataset handlers to AWS
+
+  [ Luca Wehrstedt ]
+  * TV: fix the Manager and Testcase handlers of AWS
+  * TV: update AWS to use SubmissionResults
+
+  [ Bernard Blackham ]
+  * TV: allow to see submissions on a certain dataset on AWS
+
+  [ Luca Wehrstedt ]
+  * TV: fix and improve the client interface of AWS
+
+  [ Bernard Blackham ]
+  * TV: add support to preview datasets and notify students of changes
+
+  [ Luca Wehrstedt ]
+  * TV: make AWS notify other services when Datasets or Testcases change
+
+  [ Bernard Blackham ]
+  * TV: make SS re-send old submissions to RWS when active dataset changes
+  * TV: update cmstestsuite to be versioning-aware
+
+  [ Luca Wehrstedt ]
+  * TV: update SpoolExporter to be versioning-aware
+  * TV: update YamlLoader to be versioning-aware
+  * TV: update YamlReimporter to be versioning-aware
+  * Move LANGUAGES and LANGUAGES_MAP out of cms.db
+  * Remove the unused Task.scorer field
+  * Rename the 'task_testcases' table to 'testcases'
+  * Remove names from UniqueConstraints in cms.db
+
+  [ Giovanni Mascellani ]
+  * Add OCI 2013 among testimonials.
+  * Minor.
+  * Added ABC among testimonials.
+  * Support executing CMS without installation, but from in directory different from its root.
+  * Add a UniqueConstraint in Dataset on (id, task_id).
+  * Implement NullBackend as a /dev/null FileCacher backend.
+
+  [ Luca Versari ]
+  * Update cmsMake to task versioning and to use TaskTypes (fixes #131).
+
+  [ Giovanni Mascellani ]
+  * Never delete anything from a FileCacher.
+  * Fix some details in Luca's patch.
+  * FileCacher: add method to completely destroy the cache.
+  * Destroy the cache after having finished testing.
+  * Stupid PEP8 fixup.
+  * Add a couple of Slovenian contests among testimonials.
+  * Don't keep the sandbox by default.
+
+  [ Luca Wehrstedt ]
+  * Add small comment
+
+  [ Giovanni Mascellani ]
+  * Fix two bugs about insufficient and premature cleaning.
+  * Making PEP8 happy.
+  * Factor the retrieval of the psycopg2 connection in a dedicated method.
+  * Documentation: use "database" instead of "cmsdb".
+  * Use a better way to drop the whole database.
+  * Fix a couple of my copyright years.
+  * Remove an unused import.
+  * Write the machinery required to make Importer and Reimporter fully modular.
+  * Create a base class for all loaders.
+  * Fix some details in the interface between (Re)importer and Loader.
+  * Fix docstrings in BaseLoader.
+  * Support English names in YamlImporter: first half.
+  * Support English names in YamlImporter.
+  * Update docs about Importer and Reimporter.
+  * Fix "text" to "statement".
+  * Add key 'primary_language' in YamlLoader.
+  * Fix interaction between cmsMake and YamlLoader.
+  * Async: remove support for binary responses.
+  * Start writing some docs about RPC protocol.
+  * Async: remove some unused code.
+  * Async: remove length at the beginning of RPC messages.
+  * Some more documentation about internals.
+  * Comments in cmsMake.
+  * Fix small bug in YamlLoader.
+  * A couple of typos.
+  * Loaders: make short_name and description attributes.
+  * Fix a couple of docstrings.
+  * Fix another bug in YamlLoader.
+  * Fix docstring.
+
+  [ Luca Versari ]
+  * Modified Reimporter to only import changed tasks.
+
+  [ Giovanni Mascellani ]
+  * Extend a docstring.
+  * Use a somewhat nicer touch.
+  * YamlLoader: add gen/GEN among the files to be checked for changes.
+  * Typos.
+
+  [ Stefano Maggiolo ]
+  * Removed length and binary response in the fake remote service.
+  * Added some files to the installation to fix cmstestsuite.
+
+  [ Giovanni Mascellani ]
+  * Mark TODO as such.
+  * SS: missing import of Task.
+  * Add TODO.
+  * Optimize dropping the whole database.
+  * Sample config: use "python2" instead of "python" as process_cmdline.
+
+  [ Stefano Maggiolo ]
+  * Unit tests for logservice.
+  * Renamed RunTests to RunFunctionalTests.
+  * Partial pep8 on cmstestsuite.
+  * Running unit tests automatically.
+
+  [ Bernard Blackham ]
+  * Fix patch.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+  * New upstream git snapshot.
+
+ -- Bernard Blackham <bernard@largestprime.net>  Mon, 08 Jul 2013 18:31:00 -0700
+
+cms (1.1.0~pre~git20130315~145248+b85e8a5-1quantal) quantal; urgency=low
+
+  * Build for quantal.
+
+ -- Bernard Blackham <b-pkg@largestprime.net>  Fri, 15 Mar 2013 20:37:45 +0000
+
+cms (1.1.0~pre~git20130315~145248+b85e8a5-1precise) precise; urgency=low
+
+  * New upstream git snapshot.
+
+ -- Bernard Blackham <b-pkg@largestprime.net>  Fri, 15 Mar 2013 20:36:49 +0000

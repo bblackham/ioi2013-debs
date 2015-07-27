@@ -1,0 +1,22 @@
+Description: Default RS to start LS.
+ .
+ cms (0.9~git20130120+1~eec7dca4-1) precise; urgency=low
+ .
+   * Initial release.
+Author: Bernard Blackham <b-pkg@largestprime.net>
+
+---
+
+Index: cms-debian/examples/cms.conf.sample
+===================================================================
+--- cms-debian.orig/examples/cms.conf.sample	2013-06-15 21:51:17.000000000 +0100
++++ cms-debian/examples/cms.conf.sample	2013-06-15 21:51:17.000000000 +0100
+@@ -145,7 +145,7 @@
+ 
+ 
+     "_help": "Should ResourceService should start LogService too?",
+-    "start_logservice": false,
++    "start_logservice": true,
+ 
+ 
+ 

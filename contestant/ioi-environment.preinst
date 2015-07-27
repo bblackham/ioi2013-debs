@@ -1,0 +1,9 @@
+#!/bin/sh
+
+dpkg-divert --package ioi-environment --add --rename \
+   --divert /etc/init.d/ondemand.diverted /etc/init.d/ondemand
+
+cat <<EOT > /etc/init.d/ondemand
+#!/bin/true
+EOT
+chmod 755 /etc/init.d/ondemand

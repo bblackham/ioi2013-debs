@@ -1,0 +1,59 @@
+Source: ioi2013
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+
+Package: ioi-worker
+Version: 20130706-1
+Maintainer: IOI 2013 Technical Committee <tc@ioi2013.org>
+Depends: gcc, g++, fp-compiler, cms, libjpeg-turbo8-dev, libjpeg-turbo8
+Conflicts: cpufreqd
+Architecture: all
+Files: etc/sysctl.d/90-disable-randomize-va-space.conf /
+ etc/init/disable-cpufreq.conf /
+File: preinst 0755
+ #!/bin/sh
+ set -e
+ #DEBHELPER#
+ dpkg-divert --package ioi-worker --add --rename \
+    --divert /etc/init.d/ondemand.diverted /etc/init.d/ondemand
+File: postinst 0755
+ #!/bin/sh
+ set -e
+ #DEBHELPER#
+ cat <<EOT > /etc/init.d/ondemand
+ #!/bin/true
+ EOT
+ chmod 755 /etc/init.d/ondemand
+File: postrm 0755
+ #!/bin/sh
+ set -e
+ #DEBHELPER#
+ if [ remove = "$1" -o abort-install = "$1" -o disappear = "$1" ]; then
+     rm -f /etc/init.d/ondemand
+     dpkg-divert --package ioi-worker --remove --rename \
+         --divert /etc/init.d/ondemand.diverted /etc/init.d/ondemand
+ fi
+Description: Metapackage for an IOI 2013 worker machine.
+ .
+
+# Package: <package name; defaults to equivs-dummy>
+# Version: <enter version here; defaults to 1.0>
+# Maintainer: Your Name <yourname@example.com>
+# Pre-Depends: <comma-separated list of packages>
+# Depends: <comma-separated list of packages>
+# Recommends: <comma-separated list of packages>
+# Suggests: <comma-separated list of packages>
+# Provides: <comma-separated list of packages>
+# Replaces: <comma-separated list of packages>
+# Architecture: all
+# Copyright: <copyright file; defaults to GPL2>
+# Changelog: <changelog file; defaults to a generic changelog>
+# Readme: <README.Debian file; defaults to a generic one>
+# Extra-Files: <comma-separated list of additional files for the doc directory>
+# Files: <pair of space-separated paths; First is file to include, second is destination>
+#  <more pairs, if there's more than one file to include. Notice the starting space>
+# Description: <short description; defaults to some wise words> 
+#  long description and info
+#  .
+#  second paragraph

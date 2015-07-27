@@ -1,0 +1,83 @@
+Description: Remove the use of .../local/... for directory names.
+ We are a package. We can get away with it now.
+ .
+ cms (0.9+giteec7dca4-1) precise; urgency=low
+ .
+   * Initial release.
+Author: Bernard Blackham <b-pkg@largestprime.net>
+
+----
+
+diff --git a/cms/__init__.py b/cms/__init__.py
+index 72934b3..5cb4623 100644
+--- a/cms/__init__.py
++++ b/cms/__init__.py
+@@ -133,9 +133,9 @@ class Config:
+             sys.argv[0] != '/usr/bin/python'
+ 
+         if self.installed:
+-            self.log_dir = os.path.join("/", "var", "local", "log", "cms")
+-            self.cache_dir = os.path.join("/", "var", "local", "cache", "cms")
+-            self.data_dir = os.path.join("/", "var", "local", "lib", "cms")
++            self.log_dir = os.path.join("/", "var", "log", "cms")
++            self.cache_dir = os.path.join("/", "var", "cache", "cms")
++            self.data_dir = os.path.join("/", "var", "lib", "cms")
+             paths = [os.path.join("/", "usr", "local", "etc", "cms.conf"),
+                      os.path.join("/", "etc", "cms.conf")]
+         else:
+diff --git a/cms/server/AdminWebServer.py b/cms/server/AdminWebServer.py
+index b45beff..86e8edd 100755
+--- a/cms/server/AdminWebServer.py
++++ b/cms/server/AdminWebServer.py
+@@ -165,7 +165,7 @@ class BaseHandler(CommonRequestHandler):
+         self.contest = None
+ 
+         if config.installed:
+-            localization_dir = os.path.join("/", "usr", "local", "share",
++            localization_dir = os.path.join("/", "usr", "share",
+                                             "locale")
+         else:
+             localization_dir = os.path.join(os.path.dirname(__file__), "mo")
+diff --git a/cms/server/ContestWebServer.py b/cms/server/ContestWebServer.py
+index 3633940..cf9fe00 100755
+--- a/cms/server/ContestWebServer.py
++++ b/cms/server/ContestWebServer.py
+@@ -141,7 +141,7 @@ class BaseHandler(CommonRequestHandler):
+     def get_user_locale(self):
+         if config.installed:
+             localization_dir = os.path.join(
+-                "/", "usr", "local", "share", "locale")
++                "/", "usr", "share", "locale")
+         else:
+             localization_dir = os.path.join(os.path.dirname(__file__), "mo")
+ 
+diff --git a/cmsranking/Config.py b/cmsranking/Config.py
+index 11fdb09..fdd56fc 100644
+--- a/cmsranking/Config.py
++++ b/cmsranking/Config.py
+@@ -57,9 +57,9 @@ class Config(object):
+ 
+         self.web_dir = os.path.join(os.path.dirname(__file__), "static")
+         if self.installed:
+-            self.log_dir = os.path.join("/", "var", "local", "log",
++            self.log_dir = os.path.join("/", "var", "log",
+                                         "cms", "ranking")
+-            self.lib_dir = os.path.join("/", "var", "local", "lib",
++            self.lib_dir = os.path.join("/", "var", "lib",
+                                         "cms", "ranking")
+             paths = [os.path.join("/", "usr", "local", "etc",
+                                   "cms.ranking.conf"),
+diff --git a/examples/cms.conf.sample b/examples/cms.conf.sample
+index b03c92b..cf63548 100644
+--- a/examples/cms.conf.sample
++++ b/examples/cms.conf.sample
+@@ -140,8 +140,7 @@
+     "_help": "change the first item to contain 'python' or",
+     "_help": "'python2.7' instead of 'python2', and the second",
+     "_help": "one to contain '/usr/bin' instead of /usr/local/bin'.",
+-    "process_cmdline": ["/usr/bin/python2", "/usr/local/bin/cms%s", "%d"],
+-    "_process_cmdline": ["/usr/bin/python2", "./%s.py", "%d"],
++    "process_cmdline": ["/usr/bin/python", "/usr/bin/cms%s", "%d"],
+ 
+ 
+ 
